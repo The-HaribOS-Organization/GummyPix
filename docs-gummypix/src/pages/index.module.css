@@ -8,6 +8,19 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  /*background-color: #f4efe9;*/
+  background: linear-gradient(to bottom right, #fbecec, #f4efe9);
+  color: black;
+}
+
+[data-theme='dark'] .heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /*background-color: #f4efe9;*/
+  background: linear-gradient(to bottom, #311f1c, #1f1f1f);
+  color: white;
 }
 
 @media screen and (max-width: 996px) {
