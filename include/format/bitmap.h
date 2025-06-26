@@ -29,12 +29,12 @@ typedef struct {
     uint32_t vertical_resolution;
     uint32_t color_number;
     uint32_t important_color_number;
-} __attribute__((packed)) bitmap_t;
+} __attribute__((packed)) gp_bitmap_t;
 
 
-bitmap_t *parse_bitmap(uint8_t *image);
+gp_bitmap_t *gp_parse_bitmap(uint8_t *image);
 
-__attribute__((always_inline)) inline bool is_bitmap(bitmap_t *image) {
+__attribute__((always_inline)) inline bool gp_is_bitmap(gp_bitmap_t *image) {
     return (image->header_field == BITMAP_SIGNATURE) ? true : false;
 }
 

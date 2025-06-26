@@ -6,7 +6,7 @@
 #include <math.h>
 #include "../utils.h"
 #include "convolution.h"
-
+#include "image.h"
 
 #define DIRECTION_X 0x1
 #define DIRECTION_Y 0x0
@@ -23,9 +23,9 @@ enum type_gradient {
     SCHARR_GRADIENT
 };
 
-int32_t *gradient(const image_t *image, enum type_gradient type, uint8_t direction);
+int32_t *gp_gradient(const gp_image_t *image, enum type_gradient type, uint8_t direction);
 
-__attribute__(always_inline) inline float gradient_phase(point_t point) {
+__attribute__((always_inline)) inline float gp_gradient_phase(gp_point_t point) {
 
     return (atan2f(point.y, point.x));
 }

@@ -4,10 +4,10 @@
 #include "format/bitmap.h"
 
 
-bitmap_t *parse_bitmap(uint8_t *image) {
+gp_bitmap_t *gp_parse_bitmap(uint8_t *image) {
     
-    bitmap_t *header = (bitmap_t *)malloc(sizeof(bitmap_t));
-    memcpy(header, image, sizeof(bitmap_t));
+    gp_bitmap_t *header = (gp_bitmap_t *)malloc(sizeof(gp_bitmap_t));
+    memcpy(header, image, sizeof(gp_bitmap_t));
 
     return header;
 }

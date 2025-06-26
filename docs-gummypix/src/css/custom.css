@@ -1,0 +1,59 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #D93F3C;     /* Titres et liens */
+  --ifm-color-primary-dark: #B5312E;
+  --ifm-color-primary-light: #EF6C69;
+
+  --ifm-background-color: #F4EFE9;  /* Fond */
+  --ifm-font-color-base: #222222;   /* Texte */
+
+  --ifm-code-background: #fffbe6;
+  --ifm-color-success: #3DA859;
+  --ifm-color-info: #3C75C4;
+  --ifm-color-warning: #F9C32D;
+}
+
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-background-color: #1f1f1f;
+  --ifm-font-color-base: #f0f0f0;
+  --ifm-color-primary: #F9C32D;
+  --ifm-color-success: #5FD38A;
+  --ifm-color-info: #78AEEB;
+}
+
+/* Couleur de fond de la barre de navigation */
+.navbar {
+  background-color: #D93F3C !important; /* rouge GummiPix */
+}
+
+/* Couleur du texte des liens dans la navbar */
+.navbar__item,
+.navbar__title {
+  color: #ffffff !important;
+}
+
+/* Couleur du logo ou au survol */
+.navbar__link:hover {
+  color: #F9C32D !important; /* jaune pixel */
+}
+
+
+.button--secondary {
+  background-color: #F9C32D;
+  color: #111111;
+  border: none;
+}
+
+.button--secondary:hover {
+  background-color: #FFD84A;
+  color: #000;
+}
+

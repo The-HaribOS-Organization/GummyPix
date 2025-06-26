@@ -10,36 +10,36 @@
 
 typedef struct {
     
-    point_t start;
-    point_t end;
-    pixels_t color;
-} line_t;
+    gp_point_t start;
+    gp_point_t end;
+    gp_pixels_t color;
+} gp_line_t;
 
 typedef struct {
 
-    point_t position;
-    point_t dimension;
+    gp_point_t position;
+    gp_point_t dimension;
     bool filled;
-    pixels_t color;
+    gp_pixels_t color;
     uint32_t thickness;
-} rectangle_t;
+} gp_rectangle_t;
 
 typedef struct {
     uint32_t radius;
-    point_t position;
+    gp_point_t position;
     bool filled;
-} circle_t;
+} gp_circle_t;
 
 typedef struct {
-    point_t *points;
-    pixels_t color;
+    gp_point_t *points;
+    gp_pixels_t color;
     uint32_t nb_points;
-} shape_t;
+} gp_shape_t;
 
 
-void draw_point(image_t *image, point_t point, pixels_t color);
-void draw_line(image_t *image, line_t line);
-void draw_rectangle(image_t *image, rectangle_t rectangle);
-void draw_shape(image_t *image, shape_t *shape);
+void gp_draw_point(gp_image_t *image, gp_point_t point, gp_pixels_t color);
+void gp_draw_line(gp_image_t *image, gp_line_t line);
+void gp_draw_rectangle(gp_image_t *image, gp_rectangle_t rectangle);
+void gp_draw_shape(gp_image_t *image, gp_shape_t *shape);
 
 #endif

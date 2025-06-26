@@ -6,6 +6,6 @@
 #include "../utils.h"
 
 
-int32_t *convolution(int32_t *array, point_t dimension, point_t kernel_size, const int32_t noyau[kernel_size.x][kernel_size.y]);
+int32_t *gp_convolution(int32_t *array, gp_point_t dimension, gp_point_t kernel_size, const int32_t noyau[kernel_size.x][kernel_size.y]);
 
 #endif

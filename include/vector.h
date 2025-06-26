@@ -6,7 +6,7 @@
 #include "utils.h"
 
 
-__attribute__((always_inline)) inline double norm(point_t coord) {
+__attribute__((always_inline)) inline double gp_norm(gp_point_t coord) {
 
     return sqrt(coord.x * coord.x + coord.y * coord.y);
 }

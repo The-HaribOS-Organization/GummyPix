@@ -9,6 +9,6 @@ typedef struct {
 
     uint32_t x;
     uint32_t y;
-} point_t;
+} gp_point_t;
 
 #endif

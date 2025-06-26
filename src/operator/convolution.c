@@ -7,15 +7,15 @@
 #include "utils.h"
 
 
-int32_t *convolution(int32_t *array, point_t dimension, point_t kernel_size, const int32_t noyau[kernel_size.x][kernel_size.y]) {
+int32_t *gp_convolution(int32_t *array, gp_point_t dimension, gp_point_t kernel_size, const int32_t noyau[kernel_size.x][kernel_size.y]) {
 
     if (kernel_size.x % 2 == 0 || kernel_size.y % 2 == 0) {
-        fprintf("Erreur, la taille du filtre doit etre impair.\n");
+        fprintf(stderr, "Erreur, la taille du filtre doit etre impair.\n");
         return NULL;
     }
 
     int32_t *output = (int32_t *)malloc(sizeof(int32_t) * dimension.x * dimension.y);
-    point_t padding = {
+    gp_point_t padding = {
         kernel_size.x / 2,
         kernel_size.y / 2};
 

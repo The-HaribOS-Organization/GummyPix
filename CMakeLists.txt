@@ -5,7 +5,9 @@ add_library(GummyPixLib SHARED
     src/format/bitmap.c
     src/image.c
     src/shape.c
-    src/convolution.c
+    src/operator/convolution.c
+    src/operator/gradient.c
+    src/operator/functions.c
 )
 
 find_package(OpenMP REQUIRED)
