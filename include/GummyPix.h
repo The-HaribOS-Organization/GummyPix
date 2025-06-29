@@ -6,9 +6,11 @@
 #include "vector.h"
 #include "color.h"
 #include "image.h"
+#include "histogram.h"
 #include "operator/convolution.h"
 #include "operator/gradient.h"
 #include "operator/functions.h"
+#include "operator/boolean.h"
 #include "format/bitmap.h"
 
 #endif

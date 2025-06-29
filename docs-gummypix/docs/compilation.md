@@ -2,6 +2,17 @@
 
 Dans cet exemple nous allons créer un projet où nous allons lire une image et calculer son gradient.
 
+Le gradient est un opérateur différentiel définit tel quel pour une image $I$:
+# Test d'équation
+
+Voici un test inline : $\nabla f$
+
+Et un bloc :
+
+$$
+\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}
+$$
+
 
 Premièrement créer un fichier calcul_gradient.c:
 ```c

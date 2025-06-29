@@ -11,9 +11,9 @@ gp_pixels_t *gp_sqrt(const gp_image_t *image) {
     for (uint32_t i = 0; i < image->dimension.y; i++) {
         for (uint32_t j = 0; j < image->dimension.x; j++)
             output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)sqrt(image->data[i * image->dimension.y + j].red) % 256,
-                (int32_t)sqrt(image->data[i * image->dimension.y + j].green) % 256,
-                (int32_t)sqrt(image->data[i * image->dimension.y + j].blue) % 256,
+                (int32_t)sqrt(image->data[i * image->dimension.x + j].red) % 256,
+                (int32_t)sqrt(image->data[i * image->dimension.x + j].green) % 256,
+                (int32_t)sqrt(image->data[i * image->dimension.x + j].blue) % 256,
                 0};
     }
 
@@ -27,9 +27,9 @@ gp_pixels_t *gp_pow(const gp_image_t *image, uint32_t power) {
     for (uint32_t i = 0; i < image->dimension.y; i++) {
         for (uint32_t j = 0; j < image->dimension.x; j++)
             output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)pow(image->data[i * image->dimension.y + j].red, power) % 256,
-                (int32_t)pow(image->data[i * image->dimension.y + j].green, power) % 256,
-                (int32_t)pow(image->data[i * image->dimension.y + j].blue, power) % 256,
+                int_pow_mod256(image->data[i * image->dimension.x + j].red, power),
+                int_pow_mod256(image->data[i * image->dimension.x + j].green, power),
+                int_pow_mod256(image->data[i * image->dimension.x + j].blue, power),
                 0};
     }
 
@@ -43,9 +43,9 @@ gp_pixels_t *gp_log(const gp_image_t *image) {
     for (uint32_t i = 0; i < image->dimension.y; i++) {
         for (uint32_t j = 0; j < image->dimension.x; j++)
             output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)log(image->data[i * image->dimension.y + j].red % 256),
-                (int32_t)log(image->data[i * image->dimension.y + j].green % 256),
-                (int32_t)log(image->data[i * image->dimension.y + j].blue % 256),
+                ((uint32_t)log(image->data[i * image->dimension.x + j].red) % 256),
+                ((uint32_t)log(image->data[i * image->dimension.x + j].green) % 256),
+                ((uint32_t)log(image->data[i * image->dimension.x + j].blue) % 256),
                 0};
     }
 
@@ -59,9 +59,9 @@ gp_pixels_t *gp_log2(const gp_image_t *image) {
     for (uint32_t i = 0; i < image->dimension.y; i++) {
         for (uint32_t j = 0; j < image->dimension.x; j++)
             output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)log2(image->data[i * image->dimension.y + j].red % 256),
-                (int32_t)log2(image->data[i * image->dimension.y + j].green % 256),
-                (int32_t)log2(image->data[i * image->dimension.y + j].blue % 256),
+                (int32_t)log2(image->data[i * image->dimension.x + j].red % 256),
+                (int32_t)log2(image->data[i * image->dimension.x + j].green % 256),
+                (int32_t)log2(image->data[i * image->dimension.x + j].blue % 256),
                 0};
     }
 
@@ -75,9 +75,9 @@ gp_pixels_t *gp_log10(const gp_image_t *image) {
     for (uint32_t i = 0; i < image->dimension.y; i++) {
         for (uint32_t j = 0; j < image->dimension.x; j++)
             output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)log10(image->data[i * image->dimension.y + j].red % 256),
-                (int32_t)log10(image->data[i * image->dimension.y + j].green % 256),
-                (int32_t)log10(image->data[i * image->dimension.y + j].blue % 256),
+                (int32_t)log10(image->data[i * image->dimension.x + j].red % 256),
+                (int32_t)log10(image->data[i * image->dimension.x + j].green % 256),
+                (int32_t)log10(image->data[i * image->dimension.x + j].blue % 256),
                 0};
     }
 
@@ -91,9 +91,9 @@ gp_pixels_t *gp_exp(const gp_image_t *image) {
     for (uint32_t i = 0; i < image->dimension.y; i++) {
         for (uint32_t j = 0; j < image->dimension.x; j++)
             output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)exp(image->data[i * image->dimension.y + j].red % 256),
-                (int32_t)exp(image->data[i * image->dimension.y + j].green % 256),
-                (int32_t)exp(image->data[i * image->dimension.y + j].blue % 256),
+                (int32_t)exp(image->data[i * image->dimension.x + j].red % 256),
+                (int32_t)exp(image->data[i * image->dimension.x + j].green % 256),
+                (int32_t)exp(image->data[i * image->dimension.x + j].blue % 256),
                 0};
     }
 
@@ -107,9 +107,9 @@ gp_pixels_t *gp_mul(const gp_image_t *image, uint32_t number) {
     for (uint32_t i = 0; i < image->dimension.y; i++) {
         for (uint32_t j = 0; j < image->dimension.x; j++)
             output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)(image->data[i * image->dimension.y + j].red * number) % 256,
-                (int32_t)(image->data[i * image->dimension.y + j].green * number) % 256,
-                (int32_t)(image->data[i * image->dimension.y + j].blue * number) % 256,
+                (int32_t)(image->data[i * image->dimension.x + j].red * number) % 256,
+                (int32_t)(image->data[i * image->dimension.x + j].green * number) % 256,
+                (int32_t)(image->data[i * image->dimension.x + j].blue * number) % 256,
                 0};
     }
 

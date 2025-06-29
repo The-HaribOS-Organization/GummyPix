@@ -8,15 +8,20 @@ add_library(GummyPixLib SHARED
     src/operator/convolution.c
     src/operator/gradient.c
     src/operator/functions.c
+    src/operator/boolean.c
+    src/color.c
+    src/histogram.c
 )
 
 find_package(OpenMP REQUIRED)
 target_link_libraries(
     GummyPixLib
-    m
-    OpenMP::OpenMP_C
+    PUBLIC
+        m
+        OpenMP::OpenMP_C
 )
 
+target_compile_options(GummyPixLib PRIVATE -O3 -mavx2)
 target_include_directories(GummyPixLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 install(TARGETS GummyPixLib DESTINATION lib)

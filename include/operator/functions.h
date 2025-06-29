@@ -9,6 +9,16 @@
 
 typedef gp_pixels_t (*function)(gp_pixels_t);
 
+
+static inline uint8_t int_pow_mod256(uint8_t base, uint32_t exp) {
+    uint32_t result = 1;
+    for (uint32_t i = 0; i < exp; i++) {
+        result *= base;
+    }
+    return (uint8_t)(result % 256);
+}
+
+
 gp_pixels_t *gp_sqrt(const gp_image_t *image);
 gp_pixels_t *gp_pow(const gp_image_t *image, uint32_t power);
 gp_pixels_t *gp_log(const gp_image_t *image);

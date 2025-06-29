@@ -1,0 +1,2 @@
+https://www.researchgate.net/publication/221131224_SIMD_Vectorization_of_Histogram_Functions
+

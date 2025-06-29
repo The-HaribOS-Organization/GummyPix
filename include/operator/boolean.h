@@ -6,15 +6,15 @@
 #include "image.h"
 
 
-#define NOT(pixel) ({ \
-    return (gp_pixels_t){~pixel.red, pixel.green, pixel.blue, 0}; \
-})
+
+#define NOT(pixels, canal) {( \
+    return ((canal == 0) ? ~pixel.red : (canal == 1) ? ~pixel.green : ~pixel.blue) \
+)}
 
 
-
-gp_pixels_t gp_and(gp_image_t *image);
-gp_pixels_t gp_or(gp_image_t *image);
-gp_pixels_t gp_xor(gp_image_t *image);
-gp_pixels_t gp_not(gp_image_t *image);
+uint8_t *gp_and(gp_image_t *A, gp_image_t *B, uint8_t canal);
+uint8_t *gp_or(gp_image_t *A, gp_image_t *B, uint8_t canal);
+uint8_t *gp_xor(gp_image_t *A, gp_image_t *B, uint8_t canal);
+uint8_t *gp_not(gp_image_t *image, uint8_t canal);
 
 #endif

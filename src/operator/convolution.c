@@ -20,7 +20,7 @@ int32_t *gp_convolution(int32_t *array, gp_point_t dimension, gp_point_t kernel_
         kernel_size.y / 2};
 
 
-    #pragma omp parallel for
+    #pragma omp parallel for collapse(2)
     for (uint32_t y = 0; y < dimension.y; ++y) {
         for (uint32_t x = 0; x < dimension.x; ++x) {
 
