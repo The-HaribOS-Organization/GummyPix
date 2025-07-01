@@ -52,38 +52,6 @@ gp_pixels_t *gp_log(const gp_image_t *image) {
     return output;
 }
 
-gp_pixels_t *gp_log2(const gp_image_t *image) {
-
-    gp_pixels_t *output = (gp_pixels_t *)malloc(sizeof(gp_pixels_t) * image->dimension.x * image->dimension.y);
-
-    for (uint32_t i = 0; i < image->dimension.y; i++) {
-        for (uint32_t j = 0; j < image->dimension.x; j++)
-            output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)log2(image->data[i * image->dimension.x + j].red % 256),
-                (int32_t)log2(image->data[i * image->dimension.x + j].green % 256),
-                (int32_t)log2(image->data[i * image->dimension.x + j].blue % 256),
-                0};
-    }
-
-    return output;
-}
-
-gp_pixels_t *gp_log10(const gp_image_t *image) {
-
-    gp_pixels_t *output = (gp_pixels_t *)malloc(sizeof(gp_pixels_t) * image->dimension.x * image->dimension.y);
-
-    for (uint32_t i = 0; i < image->dimension.y; i++) {
-        for (uint32_t j = 0; j < image->dimension.x; j++)
-            output[i * image->dimension.x + j] = (gp_pixels_t){
-                (int32_t)log10(image->data[i * image->dimension.x + j].red % 256),
-                (int32_t)log10(image->data[i * image->dimension.x + j].green % 256),
-                (int32_t)log10(image->data[i * image->dimension.x + j].blue % 256),
-                0};
-    }
-
-    return output;
-}
-
 gp_pixels_t *gp_exp(const gp_image_t *image) {
 
     gp_pixels_t *output = (gp_pixels_t *)malloc(sizeof(gp_pixels_t) * image->dimension.x * image->dimension.y);
@@ -126,4 +94,18 @@ gp_pixels_t *gp_apply_custom(const gp_image_t *image, function custom_fn) {
     }
 
     return output;
+}
+
+
+min_max_t gp_min_max(const uint8_t *array, uint32_t size) {
+
+    uint8_t min = 255, max = 0;
+
+    #pragma omp parallel for
+    for (uint32_t i = 0; i < size; i++) {
+        if (array[i] < min) min = array[i];
+        if (array[i] > max) max = array[i];
+    }
+
+    return (min_max_t){min, max};
 }

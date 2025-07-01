@@ -17,6 +17,12 @@ typedef struct {
 } gp_pixels_t;
 
 typedef struct {
+    float red;
+    float green;
+    float blue;
+} gp_float_pixels_t;
+
+typedef struct {
     gp_point_t dimension;
     uint32_t size;
     uint32_t bpp;
