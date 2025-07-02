@@ -21,9 +21,12 @@ gp_image_t *gp_read_image(char *file_path) {
     stat(file_path, &st);
     array = (uint8_t *)malloc(sizeof(uint8_t) * (int)st.st_size);
 
-    fread(array, st.st_size, 1, image);
-    bitmap = gp_parse_bitmap(array);
+    if (fread(array, st.st_size, 1, image) != 1) {
+        fprintf(stderr, "Erreur de lecture de l'image.\n");
+        return NULL;
+    }
 
+    bitmap = gp_parse_bitmap(array);
     if ((bitmap->bpp != 24 && bitmap->bpp != 32) || !gp_is_bitmap(bitmap)) {
 
         fprintf(stderr, "Erreur, le format de l'image n'est pas respecté.\n");

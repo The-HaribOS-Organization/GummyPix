@@ -12,5 +12,6 @@
 #include "operator/functions.h"
 #include "operator/boolean.h"
 #include "format/bitmap.h"
+#include "filter/gaussian.h"
 
 #endif

@@ -12,10 +12,10 @@
 #define DIRECTION_Y 0x0
 
 
-static const int32_t sobel_x[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
-static const int32_t sobel_y[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
-static const int32_t scharr_x[3][3] = {{3, 0, -3}, {10, 0, -10}, {3, 0, -3}};
-static const int32_t scharr_y[3][3] = {{3, 10, 3}, {0, 0, 0}, {-3, -10, -3}};
+static const _Float32 sobel_x[9] = {-1.0, 0.0, 1.0, -2.0, 0.0, 2.0, -1.0, 0.0, 1.0};
+static const _Float32 sobel_y[9] = {-1.0, -2.0, -1.0, 0.0, 0.0, 0.0, 1.0, 2.0, 1.0};
+static const _Float32 scharr_x[9] = {3.0, 0.0, -3.0, 10.0, 0.0, -10.0, 3.0, 0.0, -3.0};
+static const _Float32 scharr_y[9] = {3.0, 10.0, 3.0, 0.0, 0.0, 0.0, -3.0, -10.0, -3.0};
 
 
 enum type_gradient {
@@ -23,9 +23,9 @@ enum type_gradient {
     SCHARR_GRADIENT
 };
 
-int32_t *gp_gradient(const gp_image_t *image, enum type_gradient type, uint8_t direction);
+_Float32 *gp_gradient(const gp_image_t *image, enum type_gradient type, uint8_t direction);
 
-__attribute__((always_inline)) inline float gp_gradient_phase(gp_point_t point) {
+__attribute__((always_inline)) inline _Float32 gp_gradient_phase(gp_point_t point) {
 
     return (atan2f(point.y, point.x));
 }

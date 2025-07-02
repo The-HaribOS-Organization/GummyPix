@@ -61,8 +61,10 @@ gp_float_pixels_t *gp_read_color_map(const char *color_map) {
         return NULL;
     }
 
-    fread(color_map_array, sizeof(gp_float_pixels_t), COLOR_MAP_ENTRY_NUM, color_map_flow);
-    return color_map_array;
+    size_t block_read = fread(color_map_array, sizeof(gp_float_pixels_t), COLOR_MAP_ENTRY_NUM, color_map_flow);
+    fclose(color_map_flow);
+    
+    return (block_read != COLOR_MAP_ENTRY_NUM) ? NULL : color_map_array;
 }
 
 gp_pixels_t *gp_apply_color_map(const uint8_t *grayscale_picture, const gp_float_pixels_t *color_map, const gp_point_t size) {
