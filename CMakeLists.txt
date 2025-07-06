@@ -12,6 +12,7 @@ add_library(GummyPixLib SHARED
     src/color.c
     src/histogram.c
     src/filter/gaussian.c
+    src/fft.c
 )
 
 find_package(OpenMP REQUIRED)

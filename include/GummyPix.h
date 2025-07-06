@@ -7,6 +7,7 @@
 #include "color.h"
 #include "image.h"
 #include "histogram.h"
+#include "fft.h"
 #include "operator/convolution.h"
 #include "operator/gradient.h"
 #include "operator/functions.h"
